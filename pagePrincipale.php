@@ -35,14 +35,10 @@ include('design.php');
         </div>
     </div><br>
              <hr>
-            <li style="margin: 15px 0;"><a href="abonnement.php" style="color: black; text-decoration: none;">prendre un abonnement</a></li>
-            <li style="margin: 15px 0;">
-    <a href="ecartes.php" style="color: #f1c40f; text-decoration: none; font-weight: bold;">📱 Mes e-Cartes</a>
-</li>
             <li style="margin: 15px 0;"><a href="?page=historique" style="color: black; text-decoration: none;">📜 Historique</a></li>
             <?php if ($_SESSION['role'] === 1): ?>
-    <a href="dashboard_stats.php" style="display: block; padding: 10px; color: #f1c40f; font-weight: bold; text-decoration: none; border-left: 4px solid #f1c40f; margin-top: 10px;">
-        📊 TABLEAU DE BORD (ADMIN)
+    <a href="traitement_ajout.php" style="display: block; padding: 10px; color: #f1c40f; font-weight: bold; text-decoration: none; border-left: 4px solid #f1c40f; margin-top: 10px;">
+        📊 ajouter un pays
     </a>
 <?php endif; ?>
         </ul>
