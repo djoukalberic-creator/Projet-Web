@@ -1,73 +1,56 @@
-<!DOCTYPE html>
-<html lang="fr">
-<head>
-    <meta charset="utf-8"/>
-    <title>Projet Web - World of Travelers</title>
-    <style>
-        /* Un peu de style pour que l'utilisateur comprenne que c'est cliquable */
-        img:hover {
-            opacity: 0.8;
-            border: 2px solid #000;
-        }
-    body {
-        /* Un dégradé léger ou une couleur sable/aventure */
-        background: linear-gradient(rgba(255,255,255,0.8), rgba(255,255,255,0.8)), 
-                    url('https://images.unsplash.com/photo-1488646953014-85cb44e25828?q=80&w=1000');
-        background-size: cover;
-        background-attachment: fixed;
-        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-        text-align: center; /* Centre tout pour un look plus moderne */
-        color: #2c3e50;
-    }
-
-    img {
-        border-radius: 15px; /* Arrondir les coins des drapeaux */
-        box-shadow: 0 4px 8px rgba(0,0,0,0.2); /* Ajouter une petite ombre */
-        transition: transform 0.3s; /* Animation fluide */
-    }
-
-    img:hover {
-        transform: scale(1.1); /* L'image grossit légèrement au survol */
-    }
-    .menu-continents {
-        display: flex;          /* Met les éléments les uns à côté des autres */
-        justify-content: center; /* Les centre horizontalement */
-        align-items: flex-end;  /* Aligne les bases des images */
-        gap: 20px;              /* Espace entre les boutons */
-        margin-top: 50px;
-    }
-
-    .continent-card {
-        text-align: center;     /* Centre le texte au-dessus de l'image */
-        width: 300px;           /* Largeur de chaque bloc */
-    }
-
-    .continent-card img {
-        width: 100%;            /* L'image s'adapte à la largeur du bloc */
-        border-radius: 20px;    /* Tes fameux bords arrondis */
-        box-shadow: 0 10px 20px rgba(0,0,0,0.2);
-        transition: 0.3s;       /* Pour l'effet de survol */
-    }
-
-    .continent-card img:hover {
-        transform: translateY(-10px); /* Petit saut vers le haut au survol */
-    }
-	footer {
-    margin-top: 80px;
-    padding: 20px;
-    background-color: rgba(44, 62, 80, 0.8); /* Un bleu nuit transparent pour coller à l'image */
-    color: white;
-    font-size: 0.9em;
-    border-radius: 10px 10px 0 0; /* Arrondi seulement en haut */
+<?php
+session_start();
+require_once('db.php'); 
+$stmtUser = $pdo->prepare("SELECT * FROM utilisateurs WHERE pseudo = ?");
+$stmtUser->execute([$_SESSION['nickname']]);
+$userInfos = $stmtUser->fetch();
+$email = $userInfos['email'] ?? 'Non renseigné';
+if (!isset($_SESSION['avatar']) || empty($_SESSION['avatar'])) {
+    $_SESSION['avatar'] = $userInfos['avatar'];
+}
+// Sécurité : Si pas connecté, retour au login
+if (!isset($_SESSION['nickname'])) {
+    header('Location: connexions.php');
+    exit();
 }
 
-footer p {
-    margin: 5px 0;
-}
-</style>
-</head>
-<body>
-
+// 1. On importe le "haut" de la page (le design)
+$fond = 'UA';
+include('design.php'); 
+?>
+<p>Mise à jour : <?= date('d/m/Y H:i') ?></p>
+<div style="display: flex; min-height: 100vh;">
+    
+    <nav style="width: 250px; background-color: #2c3e50; color: white; padding: 20px;">
+        <ul style="list-style: none; padding: 0;">
+            <div class="container" style="position: relative;">
+<div style="position: absolute; left: 20px; top: 20px; display: flex; align-items: center; gap: 10px;">
+    <a href="mon_profil.php" style="text-decoration: none;">
+        <div style="width: 50px; height: 50px; border-radius: 50%; border: 2px solid #E65100; overflow: hidden; background: #fff;">
+            <img src="<?= htmlspecialchars($_SESSION['avatar'] ?? 'images/avatar_default.jpg') ?>" style="width: 100%; height: 100%; object-fit: cover;">
+        </div>
+        </a>
+        <div style="text-align: left; line-height: 1.2;">
+            <span style="font-weight: bold; color: #333; font-size: 0.8em;"><?= htmlspecialchars($_SESSION['nickname']) ?></span>
+        </div>
+    </div><br>
+             <hr>
+            <li style="margin: 15px 0;"><a href="abonnement.php" style="color: black; text-decoration: none;">prendre un abonnement</a></li>
+            <li style="margin: 15px 0;">
+    <a href="ecartes.php" style="color: #f1c40f; text-decoration: none; font-weight: bold;">📱 Mes e-Cartes</a>
+</li>
+            <li style="margin: 15px 0;"><a href="?page=historique" style="color: black; text-decoration: none;">📜 Historique</a></li>
+            <?php if ($_SESSION['role'] === 1): ?>
+    <a href="dashboard_stats.php" style="display: block; padding: 10px; color: #f1c40f; font-weight: bold; text-decoration: none; border-left: 4px solid #f1c40f; margin-top: 10px;">
+        📊 TABLEAU DE BORD (ADMIN)
+    </a>
+<?php endif; ?>
+        </ul>
+        <div style="margin-top: 50px;">
+             <a href="connexions.php?logout" style="color: #ff4d4d; text-decoration: none;">🚪 Se déconnecter</a>
+        </div>
+    </nav>
+    <main style="flex: 1; padding: 30px; background-color: #f8f9fa;">
     <h1>The World of Travelers</h1>
     <h2>Le site de voyage pour les curieux et les aventuriers</h2>
 
@@ -98,10 +81,4 @@ footer p {
     </a>
 </div>
 </div>
-<footer>
-    <p>© 2026 - World of Travelers</p>
-    <p>	Prigogine nous regarde, alors on fait du bon code !</p>
-</footer>
-</body>
-
-</html>
+<?php include('footer.php'); ?>

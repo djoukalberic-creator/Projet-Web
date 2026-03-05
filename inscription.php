@@ -31,8 +31,7 @@ if (isset($_POST['new_login'], $_POST['new_pwd'])) {
             $msg = "Ce pseudo est déjà pris !";
         } else {
             $email = $_POST['new_email'];
-            // 4. Tout est parfait, on insère avec le bonus de 100€
-            $ins = $pdo->prepare("INSERT INTO utilisateurs (pseudo, email, mot_de_passe, role) VALUES (?, ?, ?, ?)");
+            $ins = $pdo->prepare("INSERT INTO utilisateurs (pseudo, mail, password, role) VALUES (?, ?, ?, ?)");
             $success = $ins->execute([$pseudo, $email, $mdp_hache, $role_client]);
 
             if ($success) {

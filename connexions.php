@@ -31,7 +31,7 @@ if ($user['tentatives'] >= 3 && strtotime($user['dernier_echec']) > strtotime("-
     die("Trop de tentatives. Revenez plus tard.");
 }
     // On vérifie si l'utilisateur existe ET si le mot de passe est correct
-    if ($user && password_verify($mdp_saisi, $user['mot_de_passe'])) {
+    if ($user && password_verify($mdp_saisi, $user['password'])) {
         $_SESSION['nickname'] = $user['pseudo'];
         $_SESSION['role'] = (int)$user['role'];
          $_SESSION['avatar'] = $user['avatar'];
@@ -40,7 +40,7 @@ if ($user['tentatives'] >= 3 && strtotime($user['dernier_echec']) > strtotime("-
          $error = " succes";
          $message = date('d/m/Y H:i')  .$user['pseudo']  .$error;
          error_log($message ."\n", 3, "logs/systemsucces.log") ;
-        header('Location: FichierPrincipal.php');
+        header('Location: pagePrincipale.php');
         exit();
     } else {
         $error = " Pseudo ou mot de passe incorrect.";
