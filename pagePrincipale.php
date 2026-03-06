@@ -46,35 +46,40 @@ include('design.php');
              <a href="connexions.php?logout" style="color: #ff4d4d; text-decoration: none;">🚪 Se déconnecter</a>
         </div>
     </nav>
+<?php $page = 'profil'; ?>
+<?php if($page == 'profil'): ?>
     <main style="flex: 1; padding: 30px; background-color: #f8f9fa;">
     <h1>The World of Travelers</h1>
     <h2>Le site de voyage pour les curieux et les aventuriers</h2>
 
     <h3>Choisissez votre continent</h3>
-<div class = "menu-continents">
+    <div class = "menu-continents">
 <div class="continent-card">
     <p>L'Amérique, Terre de contrastes</p>
-    <a href="liste_amerique.html">
+    <a href="liste_pays.php?page=Amerique">
         <img src="images/Amerique.png" alt="Drapeau Amerique">
     </a>
 </div>
 	<div class="continent-card">
     <p>L'Afrique, berceau de l'humanité</p>
-    <a href="liste_afrique.html">
+    <a href="liste_pays.php?page=Afrique">
         <img src="images/UnionAfricaine.jpg" alt="Drapeau Union Africaine">
     </a>
 </div>
 <div class="continent-card">
     <p>L'Europe, terre de l'innovation</p>
-    <a href="liste_europe.html">
+    <a href="liste_pays.php?page=Europe">
         <img src="images/UnionEuropeenne.png" alt="Drapeau Union Européenne">
     </a>
 </div>
 <div class="continent-card">
     <p>l'Asie, le géant en puissance</p>
-    <a href="liste_asie.html">
+    <a href="liste_pays.php?page=Asie">
         <img src="images/Asie.png" alt="Drapeau sie">
     </a>
+</div>
+    <?php endif; ?>
+
 </div>
 </div>
 <?php include('footer.php'); ?>
