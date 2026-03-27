@@ -1,7 +1,7 @@
 <?php
 session_start();
 require_once('db.php'); // Toujours appeler le traducteur en premier
-
+include('design.php');
 // 1. DÉCONNEXION
 if (isset($_GET['logout'])) {
     session_destroy();
