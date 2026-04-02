@@ -6,7 +6,7 @@
     <title>the world of travelers</title>
     <style>
         .container {
-            background: rgba(255, 255, 255, 0.9);
+            background: rgba(255, 255, 255, 0.9);x
             margin: 100px auto; /* On descend un peu le bloc */
             padding: 40px;
             width: 60%;
