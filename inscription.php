@@ -1,6 +1,6 @@
 <?php
 session_start();
-include "config.php"; // utilise ta connexion mysqli
+include ("config_local.php"); // utilise ta connexion mysqli
 
 $msg = "";
 
