@@ -40,14 +40,14 @@
 
 ## 🚀 Technologies utilisées
 * **Frontend :** HTML5, CSS3 (Flexbox/Grid), JavaScript.
-* **Backend :** [PHP / Node.js / autre ?]
+* **Backend :** [PHP / Node.js / CSS]
 * **Base de données :** MySQL (Hébergée sur Filess.io)
 * **Sécurité :** Hachage des mots de passe, gestion de session par Tokens.
 
 ---
 
 ## 🛠️ Installation et Configuration
-1. Cloner le dépôt : `git clone [URL_DU_REPO]`
+1. configuration en pdo
 2. Configuration de la DB : Les accès à la DB distante sont configurés dans le fichier .env mais accessible par le fichier `config.php` 
 3. Lancer le serveur local.
 
