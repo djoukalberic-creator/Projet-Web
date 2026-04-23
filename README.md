@@ -4,12 +4,11 @@
 > système de cookies limitées pour une fluidité augmentée
 
 ## 👥 L'Équipe
-Anzeni Djouka — Chef de Projet / Lead Dev
-Anass Mohsine — Développeur Front-End
-Ibrahima Diallo — Développeur Back-End
-Akash Surendren — Designer UX/UI
-Amadou Ba — Testeur QA / Déploiement
-
+* **Anzeni Djouka** - [Rôle : Chef de Projet / Lead Dev]
+* **Anass Mohsine** - [Rôle : Développeur Front-End]
+* **Ibrahima Diallo** - [Rôle : Développeur Back-End]
+* **Akash Surendren** - [Rôle : Designer UX/UI]
+* **Amadou Ba** - [Rôle : Testeur QA / Déploiement]
 ---
 
 ## 📊 État d'avancement du projet
